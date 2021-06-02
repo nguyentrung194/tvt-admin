@@ -8,8 +8,8 @@ const local = {
     projectId: "fashion-trend-store",
     storageBucket: "fashion-trend-store.appspot.com",
     messagingSenderId: "62813207555",
-    appId: "1:62813207555:web:58ee976d25e00e87016236",
-    measurementId: "G-J4WDGZV8WD"
+    appId: "1:62813207555:web:6e8dfb0927e4a11f016236",
+    measurementId: "G-KQG5GHE5VG"
   },
 };
 
@@ -23,8 +23,8 @@ const staging = {
     projectId: "fashion-trend-store",
     storageBucket: "fashion-trend-store.appspot.com",
     messagingSenderId: "62813207555",
-    appId: "1:62813207555:web:58ee976d25e00e87016236",
-    measurementId: "G-J4WDGZV8WD",
+    appId: "1:62813207555:web:6e8dfb0927e4a11f016236",
+    measurementId: "G-KQG5GHE5VG",
   },
 };
 
@@ -38,8 +38,8 @@ const prod = {
     projectId: "fashion-trend-store",
     storageBucket: "fashion-trend-store.appspot.com",
     messagingSenderId: "62813207555",
-    appId: "1:62813207555:web:58ee976d25e00e87016236",
-    measurementId: "G-J4WDGZV8WD",
+    appId: "1:62813207555:web:6e8dfb0927e4a11f016236",
+    measurementId: "G-KQG5GHE5VG",
   },
 };
 
