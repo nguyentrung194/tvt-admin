@@ -1,0 +1,53 @@
+@keyframes load {
+  0% {
+    left: 0;
+    width: 0px;
+  }
+  50% {
+    left: 150px;
+    width: 150px;
+  }
+  100% {
+    left: 300px;
+    width: 0px;
+  }
+}
+
+.loader_root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.loader_root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e1f26;
+}
+
+.loader {
+  position: relative;
+  width: 300px;
+  min-height: 8px;
+}
+
+.loader::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 300px;
+  min-height: 8px;
+  background-color: rgba(11, 11, 11, 0.5);
+}
+
+.loader::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 30px;
+  min-height: 8px;
+  background-color: orange;
+  animation: load 1.5s linear infinite;
+}

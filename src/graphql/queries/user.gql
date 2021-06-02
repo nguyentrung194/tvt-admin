@@ -1,0 +1,79 @@
+# Address
+
+query GetAddress($email: String!) {
+  users(where: { email: { _eq: $email } }) {
+    address
+  }
+}
+
+mutation AddAddress($address: jsonb!, $email: String!) {
+  update_users(
+    where: { email: { _eq: $email } }
+    _append: { address: $address }
+  ) {
+    affected_rows
+  }
+}
+
+mutation DeleteAddress($index: Int!, $email: String!) {
+  update_users(
+    where: { email: { _eq: $email } }
+    _delete_elem: { address: $index }
+  ) {
+    affected_rows
+  }
+}
+
+# Contact
+
+query GetContact($email: String!) {
+  users(where: { email: { _eq: $email } }) {
+    phones
+  }
+}
+
+mutation AddContact($phones: jsonb!, $email: String!) {
+  update_users(
+    where: { email: { _eq: $email } }
+    _append: { phones: $phones }
+  ) {
+    affected_rows
+  }
+}
+
+mutation DeleteContact($index: Int!, $email: String!) {
+  update_users(
+    where: { email: { _eq: $email } }
+    _delete_elem: { phones: $index }
+  ) {
+    affected_rows
+  }
+}
+
+# Payment
+
+query GetPayment($email: String!) {
+  users(where: { email: { _eq: $email } }) {
+    payment
+  }
+}
+
+# Payment object as {cardNumber: "", month: "", year: ""}
+
+mutation AddPayment($payment: jsonb!, $email: String!) {
+  update_users(
+    where: { email: { _eq: $email } }
+    _append: { payment: $payment }
+  ) {
+    affected_rows
+  }
+}
+
+mutation DeletePayment($index: Int!, $email: String!) {
+  update_users(
+    where: { email: { _eq: $email } }
+    _delete_elem: { payment: $index }
+  ) {
+    affected_rows
+  }
+}

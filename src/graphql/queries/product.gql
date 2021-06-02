@@ -1,0 +1,116 @@
+query Products(
+  $where: products_bool_exp!
+  $order_by: products_order_by!
+  $limit: Int! = 10
+  $offset: Int! = 0
+) {
+  products_aggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+  products(
+    order_by: [$order_by]
+    where: $where
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    name
+    pricing
+    saleOff
+    URLImage
+  }
+}
+
+query GetProducts {
+  products(order_by: { createdAt: desc }) {
+    id
+    name
+    pricing
+    saleOff
+    URLImage
+  }
+}
+
+query ProductsByCategory($category: String!) {
+  products(
+    where: { categories_products: { category: { name: { _eq: $category } } } }
+  ) {
+    id
+    name
+    URLImage
+    pricing
+    saleOff
+  }
+}
+
+mutation InsertProduct(
+  $categories_name: String!
+  $URLImage: String!
+  $name: String!
+  $pricing: Int!
+  $saleOff: Int!
+) {
+  insert_products(
+    objects: {
+      categories_products: {
+        data: { category: { data: { name: $categories_name } } }
+      }
+      URLImage: $URLImage
+      name: $name
+      pricing: $pricing
+      saleOff: $saleOff
+    }
+  ) {
+    affected_rows
+  }
+}
+
+mutation UpdateProductByPK(
+  $id: uuid!
+  $URLImage: String!
+  $name: String!
+  $pricing: Int!
+  $saleOff: Int!
+) {
+  update_products_by_pk(
+    pk_columns: { id: $id }
+    _set: {
+      name: $name
+      pricing: $pricing
+      saleOff: $saleOff
+      URLImage: $URLImage
+    }
+  ) {
+    id
+  }
+}
+
+mutation UpdateProducts(
+  $id: uuid!
+  $URLImage: String!
+  $name: String!
+  $pricing: Int!
+  $saleOff: Int!
+) {
+  update_products(
+    where: { id: { _eq: $id } }
+    _set: {
+      URLImage: $URLImage
+      name: $name
+      pricing: $pricing
+      saleOff: $saleOff
+    }
+  ) {
+    returning {
+      id
+    }
+  }
+}
+
+mutation DeleteProductByPK($id: uuid!) {
+  delete_products_by_pk(id: $id) {
+    id
+  }
+}

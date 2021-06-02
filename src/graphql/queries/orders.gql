@@ -1,0 +1,21 @@
+mutation InsertOrder(
+  $deliveryAddress: jsonb!
+  $contactNumber: jsonb!
+  $deliveryMethod: jsonb!
+  $paymentOption: jsonb
+  $products: jsonb!
+  $userId: String!
+) {
+  insert_orders_one(
+    object: {
+      deliveryAddress: $deliveryAddress
+      contactNumber: $contactNumber
+      deliveryMethod: $deliveryMethod
+      paymentOption: $paymentOption
+      products: $products
+      userId: $userId
+    }
+  ) {
+    id
+  }
+}
